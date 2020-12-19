@@ -71,6 +71,10 @@ group :production do
 end
 
 gem 'jquery-rails'
+gem 'faker',          '1.7.3'
+
+gem 'will_paginate',           '3.1.7'
+gem 'bootstrap-will_paginate', '1.0.0'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

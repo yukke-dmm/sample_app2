@@ -7,6 +7,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 
   test "invalid signup information" do
     get signup_path
+    # user.countの変化を数える。失敗したのに人ずが増えてしまうといけないのでチェック
     assert_no_difference 'User.count' do
       post signup_path, params: { user: { name:  "",
                                          email: "user@invalid",
@@ -19,8 +20,9 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_select 'form[action="/signup"]'
   end
 
-    test "valid signup information" do
+  test "valid signup information" do
     get signup_path
+    # 毎回のサインアップで一人ずつしか変化しないから↓
     assert_difference 'User.count', 1 do
       post users_path, params: { user: { name:  "Example User",
                                          email: "user@example.com",
